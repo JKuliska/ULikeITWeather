@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ULikeITWeather.TextView.SmallTitle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/global_text_medium</item>
+    </style>
+
+    <style name="ULikeITWeather.TextView.LargeTitle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/global_text_xlarge</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ULikeITWeather.TextView.DetailText" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/global_text_large</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">@dimen/global_metric_small</item>
+    </style>
+    <style name="ULikeITWeather.Application.Theme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/global_text</item>
+    </style>
+
+</resources>

@@ -1,0 +1,11 @@
+<resources>
+
+    <color name="view_line_grey">#999999</color>
+    <color name="global_theme_blue">#96b5e4</color>
+    <color name="global_text">#000000</color>
+    <color name="fragment_background_default">#FFFFFF</color>
+    <color name="view_pressed_bg">#D3EBF2</color>
+    <color name="view_activated_bg">#FFE5CC</color>
+    <color name="actionbar_title">#FFFFFF</color>
+
+</resources>

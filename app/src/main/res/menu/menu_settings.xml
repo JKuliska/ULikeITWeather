@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ulikeitweather="http://schemas.android.com/apk/res-auto" >
+    <item
+        android:id="@+id/menu_item_refresh"
+        android:icon="@android:drawable/ic_popup_sync"
+        android:title="@string/ac_refresh"
+        ulikeitweather:showAsAction="always"/>
+    <item
+        android:id="@+id/menu_item_settings"
+        android:title="@string/ac_settings"
+        android:icon="@android:drawable/ic_menu_preferences"
+        ulikeitweather:showAsAction="always"/>
+</menu>

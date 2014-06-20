@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/global_metric_small"
+    android:background="@drawable/layout_click_state">
+
+    <ImageView
+        android:id="@+id/ic_list_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="@dimen/global_metric_medium"
+        android:contentDescription="@string/ac_today" />
+
+
+    <TextView
+        android:id="@+id/txt_list_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/global_text_large"
+        android:layout_gravity="center"
+        android:textColor="@color/global_text" />
+</LinearLayout>
