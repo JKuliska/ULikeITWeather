@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/global_metric_small"
-    android:background="@drawable/layout_click_state">
+    android:background="@drawable/selector_view_listview_item_bg">
 
     <ImageView
         android:id="@+id/ic_list_item"

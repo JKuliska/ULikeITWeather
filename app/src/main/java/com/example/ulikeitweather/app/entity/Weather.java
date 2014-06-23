@@ -19,107 +19,107 @@ public class Weather {
     private String mWindDir;
 
 
-    public String getmDayOfWeek() { return mDayOfWeek; }
+    public String getDayOfWeek() { return mDayOfWeek; }
 
 
-    public void setmDayOfWeek(String mDayOfWeek) { this.mDayOfWeek = mDayOfWeek; }
+    public void setDayOfWeek(String dayOfWeek) { this.mDayOfWeek = dayOfWeek; }
 
 
-    public String getmTempC() { return mTempC; }
+    public String getTempC() { return mTempC; }
 
 
-    public void setmTempC(String mTempC) {
-        this.mTempC = mTempC;
+    public void setTempC(String tempC) {
+        this.mTempC = tempC;
     }
 
 
-    public String getmTempF() {
+    public String getTempF() {
         return mTempF;
     }
 
 
-    public void setmTempF(String mTempF) {
-        this.mTempF = mTempF;
+    public void setTempF(String tempF) {
+        this.mTempF = tempF;
     }
 
 
-    public String getmPrecip() {
+    public String getPrecip() {
         return mPrecip;
     }
 
 
-    public void setmPrecip(String mPrecip) {
-        this.mPrecip = mPrecip;
+    public void setPrecip(String precip) {
+        this.mPrecip = precip;
     }
 
 
-    public String getmHumidity() {
+    public String getHumidity() {
         return mHumidity;
     }
 
 
-    public void setmHumidity(String mHumidity) {
-        this.mHumidity = mHumidity;
+    public void setHumidity(String humidity) {
+        this.mHumidity = humidity;
     }
 
 
-    public String getmPressure() {
+    public String getPressure() {
         return mPressure;
     }
 
 
-    public void setmPressure(String mPressure) {
-        this.mPressure = mPressure;
+    public void setPressure(String pressure) {
+        this.mPressure = pressure;
     }
 
 
-    public String getmWindSpeedKmh() {
+    public String getWindSpeedKmh() {
         return mWindSpeedKmh;
     }
 
 
-    public void setmWindSpeedKmh(String mWindSpeedKmh) {
-        this.mWindSpeedKmh = mWindSpeedKmh;
+    public void setWindSpeedKmh(String windSpeedKmh) {
+        this.mWindSpeedKmh = windSpeedKmh;
     }
 
 
-    public String getmWindSpeedMph() {
+    public String getWindSpeedMph() {
         return mWindSpeedMph;
     }
 
 
-    public void setmWindSpeedMph(String mWindSpeedMph) {
-        this.mWindSpeedMph = mWindSpeedMph;
+    public void setWindSpeedMph(String windSpeedMph) {
+        this.mWindSpeedMph = windSpeedMph;
     }
 
 
-    public String getmWindDir() {
+    public String getWindDir() {
         return mWindDir;
     }
 
 
-    public void setmWindDir(String mWindDir) {
-        this.mWindDir = mWindDir;
+    public void setWindDir(String windDir) {
+        this.mWindDir = windDir;
     }
 
 
-    public String getmDescription() {
+    public String getDescription() {
         return mDescription;
     }
 
 
-    public void setmDescription(String mDescription) {
-        this.mDescription = mDescription;
+    public void setDescription(String description) {
+        this.mDescription = description;
     }
 
 
-    public String getmImgUrl() {
+    public String getImgUrl() {
         return mImgUrl;
     }
 
 
-    public void setmImgUrl(String mImgUrl) {
-        this.mImgUrl = mImgUrl;
+    public void setImgUrl(String imgUrl) {
+        this.mImgUrl = imgUrl;
     }
 }
 

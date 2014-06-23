@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
 import com.example.ulikeitweather.app.R;
+import com.example.ulikeitweather.app.ULikeITWeatherConfig;
+import com.example.ulikeitweather.app.activity.MainActivity;
 
 /**
  * shows an options dialog for sharing the weather information
@@ -16,23 +18,27 @@ import com.example.ulikeitweather.app.R;
 
 public class ShareDialog extends DialogFragment {
 
-    private static String mMessage = "";
-
+    private static final String SHARE_MESSAGE_BUNDLE_KEY = "message";
+    private String mMessage;
 
     public static ShareDialog newInstance(String message) {
         ShareDialog shareDialog = new ShareDialog();
         Bundle args = new Bundle();
+        args.putString(SHARE_MESSAGE_BUNDLE_KEY, message);
         shareDialog.setArguments(args);
-        mMessage = message;
         return shareDialog;
     }
+
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle args = getArguments();
+        if(args != null) {
+            handleArguments(args);
+        }
     }
-
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -65,5 +71,11 @@ public class ShareDialog extends DialogFragment {
         });
 
         return mDialogBuilder.create();
+    }
+
+    private void handleArguments(Bundle args) {
+        if(args.containsKey(SHARE_MESSAGE_BUNDLE_KEY)) {
+            mMessage = args.getString(SHARE_MESSAGE_BUNDLE_KEY);
+        }
     }
 }

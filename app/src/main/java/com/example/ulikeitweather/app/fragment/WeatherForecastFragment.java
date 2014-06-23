@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.ulikeitweather.app.R;
 import com.example.ulikeitweather.app.client.parser.WeatherParser;
+import com.example.ulikeitweather.app.utility.MySharedPrefs;
 import com.example.ulikeitweather.app.entity.Weather;
 import com.example.ulikeitweather.app.listener.OnClickListenerShare;
 import com.example.ulikeitweather.app.task.DownloadIconTask;
@@ -112,7 +113,7 @@ public class WeatherForecastFragment extends WeatherFragment {
 
     private void downloadIcons() {
         for(int i =0; i < mForecast.length; i++) {
-            new DownloadIconTask(getActivity(), this, i).execute(mForecast[i].getmImgUrl());
+            new DownloadIconTask(getActivity(), this, i).execute(mForecast[i].getImgUrl());
         }
     }
 
@@ -137,12 +138,12 @@ public class WeatherForecastFragment extends WeatherFragment {
         RelativeLayout[] mLayoutItem = getContainterLayouts();
         for(int i =0; i < mLayoutItem.length; i++) {
             TextView dayOfWeekTxt = (TextView) mLayoutItem[i].findViewById(R.id.txt_day);
-            dayOfWeekTxt.setText(mForecast[i].getmDayOfWeek());
+            dayOfWeekTxt.setText(mForecast[i].getDayOfWeek());
             TextView tempTxt = (TextView) mLayoutItem[i].findViewById(R.id.txt_temperature);
-            tempTxt.setText(SettingsFragment.useCelsius ? mForecast[i].getmTempC() + getActivity().getResources().getString(R.string.global_celsius_abbr)
-                                                                : mForecast[i].getmTempF() + getActivity().getResources().getString(R.string.global_fahrenheit_abbr));
+            tempTxt.setText(new MySharedPrefs(getActivity()).isCelsius() ? mForecast[i].getTempC() + getActivity().getResources().getString(R.string.global_celsius_abbr)
+                                                                : mForecast[i].getTempF() + getActivity().getResources().getString(R.string.global_fahrenheit_abbr));
             TextView descTxt = (TextView) mLayoutItem[i].findViewById(R.id.txt_description);
-            descTxt.setText(mForecast[i].getmDescription());
+            descTxt.setText(mForecast[i].getDescription());
             AlphaAnimation mAnim = new AlphaAnimation(0.0f, 1.0f);
             dayOfWeekTxt.setAnimation(mAnim);
             tempTxt.setAnimation(mAnim);

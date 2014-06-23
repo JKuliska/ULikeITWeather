@@ -11,7 +11,7 @@
         android:orientation="vertical"
         android:clickable="true"
         android:id="@+id/lyt_day_full"
-        android:background="@drawable/layout_click_state">
+        android:background="@drawable/selector_view_listview_item_bg">
         </LinearLayout>
     <LinearLayout
         android:id="@+id/lyt_weather_state_container"

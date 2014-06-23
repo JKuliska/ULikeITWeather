@@ -1,0 +1,135 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_img_nature"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:id="@+id/lyt_today_full">
+
+        <LinearLayout
+            android:id="@+id/lyt_weather_state_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/global_metric_medium">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_weather_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/global_metric_medium"
+                    android:layout_alignTop="@+id/img_weather_state_circle"
+                    android:layout_alignBottom="@id/img_weather_state_circle"
+                    android:layout_alignRight="@id/img_weather_state_circle"
+                    android:layout_alignLeft="@id/img_weather_state_circle" />
+
+                <ImageView
+                    android:id="@id/img_weather_state_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <ImageView android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/overlay_wsymbols"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            style="@style/ULikeITWeather.TextView.SmallTitle" />
+
+        <TextView
+            android:id="@+id/txt_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            style="@style/ULikeITWeather.TextView.LargeTitle" />
+
+        <ImageView
+            android:id="@+id/img_line"
+            android:layout_width="@dimen/view_imageview_line_length"
+            android:layout_height="@dimen/view_listview_divider"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/view_line_grey"
+            android:padding="@dimen/global_metric_medium"
+            android:layout_below="@id/txt_temperature" />
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/global_metric_medium">
+
+            <include
+                layout="@layout/layout_detail"
+                android:id="@+id/lyt_humidity" />
+
+            <include
+                layout="@layout/layout_detail"
+                android:id="@+id/lyt_precipitation" />
+
+            <include
+                layout="@layout/layout_detail"
+                android:id="@+id/lyt_pressure" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"/>
+
+            <include
+                layout="@layout/layout_detail"
+                android:id="@+id/lyt_wind_speed" />
+
+            <include
+                layout="@layout/layout_detail"
+                android:id="@+id/lyt_wind_direction" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="10">
+
+    </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>
+<!-- From: file:/D:/androidprojects/ULikeITWeather/app/src/main/res/layout/fragment_weather_today.xml -->

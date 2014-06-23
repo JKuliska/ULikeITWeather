@@ -101,11 +101,11 @@ public class WeatherParser {
         for(int i = 0; i < FORECAST_DAYS; i++) {
             String[] strOneDayArray = mCsvString[i+1].split(",");
             mWeatherForecast[i] = new Weather();
-            mWeatherForecast[i].setmTempC(strOneDayArray[1]);
-            mWeatherForecast[i].setmTempF(strOneDayArray[2]);
-            mWeatherForecast[i].setmImgUrl(strOneDayArray[10]);
-            mWeatherForecast[i].setmDescription(strOneDayArray[11]);
-            mWeatherForecast[i].setmDayOfWeek(getDayOfWeek(strOneDayArray[0]));
+            mWeatherForecast[i].setTempC(strOneDayArray[1]);
+            mWeatherForecast[i].setTempF(strOneDayArray[2]);
+            mWeatherForecast[i].setImgUrl(strOneDayArray[10]);
+            mWeatherForecast[i].setDescription(strOneDayArray[11]);
+            mWeatherForecast[i].setDayOfWeek(getDayOfWeek(strOneDayArray[0]));
         }
     }
 
@@ -115,16 +115,16 @@ public class WeatherParser {
     private void getToday() {
         mWeatherToday = new Weather();
         String[] strTodayArray = mCsvString[0].split(",");
-        mWeatherToday.setmTempC(strTodayArray[1]);
-        mWeatherToday.setmTempF(convertCelsiusToFahrenheit(Integer.parseInt(strTodayArray[1])) + "");
-        mWeatherToday.setmImgUrl(strTodayArray[3]);
-        mWeatherToday.setmDescription(strTodayArray[4]);
-        mWeatherToday.setmWindSpeedMph(strTodayArray[5]);
-        mWeatherToday.setmWindSpeedKmh(strTodayArray[6]);
-        mWeatherToday.setmWindDir(strTodayArray[8]);
-        mWeatherToday.setmPrecip(strTodayArray[9]);
-        mWeatherToday.setmHumidity(strTodayArray[10]);
-        mWeatherToday.setmPressure(strTodayArray[12]);
+        mWeatherToday.setTempC(strTodayArray[1]);
+        mWeatherToday.setTempF(convertCelsiusToFahrenheit(Integer.parseInt(strTodayArray[1])) + "");
+        mWeatherToday.setImgUrl(strTodayArray[3]);
+        mWeatherToday.setDescription(strTodayArray[4]);
+        mWeatherToday.setWindSpeedMph(strTodayArray[5]);
+        mWeatherToday.setWindSpeedKmh(strTodayArray[6]);
+        mWeatherToday.setWindDir(strTodayArray[8]);
+        mWeatherToday.setPrecip(strTodayArray[9]);
+        mWeatherToday.setHumidity(strTodayArray[10]);
+        mWeatherToday.setPressure(strTodayArray[12]);
     }
 
 

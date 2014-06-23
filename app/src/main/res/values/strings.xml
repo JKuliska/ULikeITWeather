@@ -47,22 +47,6 @@
     <string name="dialog_no_internet_message">Turn on Internet to download latest weather?</string>
 
     <string name="toast_weather_not_displayed">Current weather cannot be displayed</string>
-    
-    
-    <string-array name="drawer_items">
-        <item>@string/ac_today</item>
-        <item>@string/ac_forecast</item>
-    </string-array>
-
-    <string-array name="drawer_icons">
-        <item>@drawable/ic_action_go_to_today</item>
-        <item>@drawable/ic_action_cloud</item>
-    </string-array>
-    
-    <string-array name="view_list_settings">
-        <item>@string/list_item_length</item>
-        <item>@string/list_item_temperature</item>
-    </string-array>
 
     <string-array name="view_list_share">
         <item>@string/dialog_share_share</item>

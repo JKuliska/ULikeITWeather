@@ -6,8 +6,8 @@ import android.view.View;
 
 import com.example.ulikeitweather.app.R;
 import com.example.ulikeitweather.app.dialog.ShareDialog;
+import com.example.ulikeitweather.app.utility.MySharedPrefs;
 import com.example.ulikeitweather.app.entity.Weather;
-import com.example.ulikeitweather.app.fragment.SettingsFragment;
 /*
 listens for screen click to show the share dialog
  */
@@ -35,11 +35,11 @@ public class OnClickListenerShare implements View.OnClickListener {
     creates a message that is to be shared
      */
     private String buildShareMessage() {
-        StringBuilder mStrBuilder = new StringBuilder();
-        mStrBuilder.append((mWeather.getmDayOfWeek() == null ? mContext.getResources().getString(R.string.global_today) : mWeather.getmDayOfWeek()) + ": ");
-        mStrBuilder.append((SettingsFragment.useCelsius ? mWeather.getmTempC() + mContext.getResources().getString(R.string.global_celsius_abbr)
-                                                        : mWeather.getmTempF() + mContext.getResources().getString(R.string.global_celsius_abbr) + ", "));
-        mStrBuilder.append(mWeather.getmDescription());
-        return mStrBuilder.toString();
+        StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append((mWeather.getDayOfWeek() == null ? mContext.getResources().getString(R.string.global_today) : mWeather.getDayOfWeek()) + ": ");
+        strBuilder.append((new MySharedPrefs(mContext).isCelsius() ? mWeather.getTempC() + mContext.getResources().getString(R.string.global_celsius_abbr)
+                                                        : mWeather.getTempF() + mContext.getResources().getString(R.string.global_celsius_abbr) + ", "));
+        strBuilder.append(mWeather.getDescription());
+        return strBuilder.toString();
     }
 }

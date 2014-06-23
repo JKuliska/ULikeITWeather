@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.ulikeitweather.app.R;
 import com.example.ulikeitweather.app.client.parser.WeatherParser;
+import com.example.ulikeitweather.app.utility.MySharedPrefs;
 import com.example.ulikeitweather.app.entity.Weather;
 import com.example.ulikeitweather.app.listener.OnCityLoadedListener;
 import com.example.ulikeitweather.app.listener.OnClickListenerShare;
@@ -125,21 +126,21 @@ public class WeatherTodayFragment extends WeatherFragment implements OnCityLoade
             mText[i] = (TextView) mLyt[i].findViewById(R.id.txt_icon);
         }
         mImg[0].setImageResource(R.drawable.ic_humidity);
-        mText[0].setText(mWeather.getmHumidity() + getActivity().getResources().getString(R.string.global_percent_abbr));
+        mText[0].setText(mWeather.getHumidity() + getActivity().getResources().getString(R.string.global_percent_abbr));
         mImg[1].setImageResource(R.drawable.ic_precipitation);
-        mText[1].setText(mWeather.getmPrecip() + getActivity().getResources().getString(R.string.global_milimeter_abbr));
+        mText[1].setText(mWeather.getPrecip() + getActivity().getResources().getString(R.string.global_milimeter_abbr));
         mImg[2].setImageResource(R.drawable.ic_pressure);
-        mText[2].setText(mWeather.getmPressure() + getActivity().getResources().getString(R.string.global_hpa_abbr));
+        mText[2].setText(mWeather.getPressure() + getActivity().getResources().getString(R.string.global_hpa_abbr));
         mImg[3].setImageResource(R.drawable.ic_wind_speed);
-        mText[3].setText(SettingsFragment.useKilometer ? mWeather.getmWindSpeedKmh() + getActivity().getResources().getString(R.string.global_kph_abbr)
-                                                            : mWeather.getmWindSpeedMph() + getActivity().getResources().getString(R.string.global_mph_abbr));
+        mText[3].setText(new MySharedPrefs(getActivity()).isKilometer() ? mWeather.getWindSpeedKmh() + getActivity().getResources().getString(R.string.global_kph_abbr)
+                                                            : mWeather.getWindSpeedMph() + getActivity().getResources().getString(R.string.global_mph_abbr));
         mImg[4].setImageResource(R.drawable.ic_wind_direction);
-        mText[4].setText(mWeather.getmWindDir());
+        mText[4].setText(mWeather.getWindDir());
 
         TextView mDescriptionTxt = (TextView) getActivity().findViewById(R.id.txt_temperature);
-        mDescriptionTxt.setText((SettingsFragment.useCelsius ? mWeather.getmTempC() + getActivity().getResources().getString(R.string.global_celsius_abbr)
-                                                                    : mWeather.getmTempF() + getActivity().getResources().getString(R.string.global_fahrenheit_abbr))
-                                                                    + " | " + mWeather.getmDescription());
+        mDescriptionTxt.setText((new MySharedPrefs(getActivity()).isCelsius() ? mWeather.getTempC() + getActivity().getResources().getString(R.string.global_celsius_abbr)
+                                                                    : mWeather.getTempF() + getActivity().getResources().getString(R.string.global_fahrenheit_abbr))
+                                                                    + " | " + mWeather.getDescription());
     }
 
     /*
@@ -153,7 +154,7 @@ public class WeatherTodayFragment extends WeatherFragment implements OnCityLoade
         } else {
             WeatherParser mWeatherParser = new WeatherParser(getActivity(), file);
             mWeather = mWeatherParser.getWeatherToday();
-            new DownloadIconTask(getActivity(), this, 4).execute(mWeather.getmImgUrl());
+            new DownloadIconTask(getActivity(), this, 4).execute(mWeather.getImgUrl());
             loadViewDetails();
             setupListener();
         }

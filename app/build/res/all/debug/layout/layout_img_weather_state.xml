@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_weather_state_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/overlay_wsymbols"
+        />
+
+    <ImageView
+        android:id="@+id/img_weather_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/global_metric_medium"
+        android:layout_alignTop="@id/img_weather_state_circle"
+        android:layout_alignBottom="@id/img_weather_state_circle"
+        android:layout_alignRight="@id/img_weather_state_circle"
+        android:layout_alignLeft="@id/img_weather_state_circle" />
+</RelativeLayout><!-- From: file:/D:/androidprojects/ULikeITWeather/app/src/main/res/layout/layout_img_weather_state.xml -->
