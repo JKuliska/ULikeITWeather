@@ -26,6 +26,8 @@ public class WeatherParser {
     private static final String JSON_CURRENT_CONDITION = "current_condition";
     private static final String JSON_TEMP_C = "temp_C";
     private static final String JSON_TEMP_F = "temp_F";
+    private static final String JSON_TEMP_MAX_C = "tempMaxC";
+    private static final String JSON_TEMP_MAX_F = "tempMaxF";
     private static final String JSON_IMG_URL = "weatherIconUrl";
     private static final String JSON_DESCRIPTION = "weatherDesc";
     private static final String JSON_WIND_KPH = "windspeedKmph";
@@ -137,8 +139,8 @@ public class WeatherParser {
                 JSONObject jsonChildNode = jsonArray.getJSONObject(i);
 
                 weatherForecast[i] = new Weather();
-                weatherForecast[i].setTempC(jsonChildNode.optString(JSON_TEMP_C));
-                weatherForecast[i].setTempF(jsonChildNode.optString(JSON_TEMP_F));
+                weatherForecast[i].setTempC(jsonChildNode.optString(JSON_TEMP_MAX_C));
+                weatherForecast[i].setTempF(jsonChildNode.optString(JSON_TEMP_MAX_F));
                 weatherForecast[i].setDayOfWeek(getDayOfWeek(jsonChildNode.optString(JSON_DATE)));
 
 
