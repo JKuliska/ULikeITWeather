@@ -4,11 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ulikeitweather.app.R;
@@ -17,6 +19,7 @@ import com.example.ulikeitweather.app.entity.MyLocation;
 import com.example.ulikeitweather.app.listener.OnIconDownloadedListener;
 import com.example.ulikeitweather.app.listener.OnWeatherDownloadedListener;
 import com.example.ulikeitweather.app.task.DownloadWeather;
+import com.example.ulikeitweather.app.utility.Logcat;
 
 /**
  * parent class for both Weather fragments implementing listeners for finished download events
@@ -26,16 +29,9 @@ public abstract class WeatherFragment extends Fragment implements OnWeatherDownl
 
     protected MyLocation myLocation = new MyLocation();
     protected boolean canGetLocation = false;
+    protected boolean isPortrait = true;
 
     public abstract void loadView();
-    public abstract void populateViewForOrientation(LayoutInflater inflater, ViewGroup viewGroup);
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        LayoutInflater inflater = LayoutInflater.from(getActivity());
-        populateViewForOrientation(inflater, (ViewGroup) getView());
-    }
 
     /*
     if it is possible, it gets the location current location of the user and downloads the according weather
@@ -63,7 +59,6 @@ public abstract class WeatherFragment extends Fragment implements OnWeatherDownl
         super.onResume();
         loadView();
     }
-
 
     /*
     shows dialog asking user if they want to turn on the Internet so that the weather could be downloaded

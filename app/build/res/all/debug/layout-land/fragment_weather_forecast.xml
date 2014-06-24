@@ -6,67 +6,9 @@
     android:clickable="true"
     android:background="@drawable/selector_view_listview_item_bg">
 
-    <LinearLayout
+    <GridView
+        android:id="@+id/forecast_grid"
+        android:numColumns="2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="@dimen/view_listview_margin"
-            android:clickable="true"
-            android:id="@+id/lyt_forecast1">
-
-            <include
-                layout="@layout/layout_forecast_day"
-                android:id="@+id/lyt_day1" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="@dimen/view_listview_margin"
-            android:clickable="true"
-            android:id="@+id/lyt_forecast2">
-
-            <include
-                layout="@layout/layout_forecast_day"
-                android:id="@+id/lyt_day2"/>
-        </LinearLayout>
-        </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="@dimen/view_listview_margin"
-            android:clickable="true"
-            android:id="@+id/lyt_forecast3">
-
-            <include
-                layout="@layout/layout_forecast_day"
-                android:id="@+id/lyt_day3" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="@dimen/view_listview_margin"
-            android:clickable="true"
-            android:id="@+id/lyt_forecast4">
-
-            <include
-                layout="@layout/layout_forecast_day"
-                android:id="@+id/lyt_day4"/>
-        </LinearLayout>
-    </LinearLayout>
-
+        android:layout_height="match_parent"/>
 </LinearLayout><!-- From: file:/D:/androidprojects/ULikeITWeather/app/src/main/res/layout-land/fragment_weather_forecast.xml -->

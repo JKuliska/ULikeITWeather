@@ -32,16 +32,6 @@ public class WeatherTodayFragment extends WeatherFragment implements OnCityLoade
     }
 
     /*
-    actions taken when the orientation is changed
-     */
-    public void populateViewForOrientation(LayoutInflater inflater, ViewGroup viewGroup) {
-        viewGroup.removeAllViewsInLayout();
-        inflater.inflate(R.layout.fragment_weather_today, viewGroup);
-        loadViewSecondary();
-        setupListener();
-    }
-
-    /*
     sets up share listener
      */
     private void setupListener() {

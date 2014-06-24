@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.example.ulikeitweather.app.R;
 import com.example.ulikeitweather.app.entity.Weather;
-import com.example.ulikeitweather.app.utility.Logcat;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,7 +12,9 @@ import org.json.JSONObject;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * parses the raw downloaded text file containing weather information into entities
@@ -21,7 +22,6 @@ import java.util.Calendar;
 
 public class WeatherParser {
 
-    private static final int FORECAST_DAYS = 4;
     private static final String JSON_MAIN_NODE_NAME = "data";
     private static final String JSON_CURRENT_CONDITION = "current_condition";
     private static final String JSON_TEMP_C = "temp_C";
@@ -41,7 +41,7 @@ public class WeatherParser {
     private static final String JSON_WEATHER = "weather";
 
     private Context mContext;
-    private Weather[] mWeatherForecast; //4 days of forecast
+    private List<Weather> mWeatherForecast; //4 days of forecast
     private Weather mWeatherToday; //one current day
 
 
@@ -50,7 +50,7 @@ public class WeatherParser {
     }
 
 
-    public Weather[] getWeatherForecast() {
+    public List<Weather> getWeatherForecast() {
         return mWeatherForecast;
     }
 
@@ -125,8 +125,8 @@ public class WeatherParser {
     /*
     gets the forecast for the next 4 days and stores it in a mWeatherForecast array
      */
-    private Weather[] getFourDayForecast(JSONObject jsonObject) {
-        Weather[] weatherForecast = new Weather[FORECAST_DAYS];
+    private List<Weather> getFourDayForecast(JSONObject jsonObject) {
+        List<Weather> weatherForecast = new ArrayList<Weather>();
 
         JSONObject jsonMainNode = jsonObject.optJSONObject(JSON_MAIN_NODE_NAME);
         try {
@@ -138,16 +138,18 @@ public class WeatherParser {
 
                 JSONObject jsonChildNode = jsonArray.getJSONObject(i);
 
-                weatherForecast[i] = new Weather();
-                weatherForecast[i].setTempC(jsonChildNode.optString(JSON_TEMP_MAX_C));
-                weatherForecast[i].setTempF(jsonChildNode.optString(JSON_TEMP_MAX_F));
-                weatherForecast[i].setDayOfWeek(getDayOfWeek(jsonChildNode.optString(JSON_DATE)));
-
+                Weather weather = new Weather();
+                weather.setTempC(jsonChildNode.optString(JSON_TEMP_MAX_C));
+                weather.setTempF(jsonChildNode.optString(JSON_TEMP_MAX_F));
+                weather.setDayOfWeek(getDayOfWeek(jsonChildNode.optString(JSON_DATE)));
 
                 JSONArray jsonChildArray = jsonChildNode.getJSONArray(JSON_DESCRIPTION);
-                weatherForecast[i].setDescription(jsonChildArray.getJSONObject(0).optString(JSON_VALUE));
+                weather.setDescription(jsonChildArray.getJSONObject(0).optString(JSON_VALUE));
                 jsonChildArray = jsonChildNode.getJSONArray(JSON_IMG_URL);
-                weatherForecast[i].setImgUrl(jsonChildArray.getJSONObject(0).optString(JSON_VALUE));
+                weather.setImgUrl(jsonChildArray.getJSONObject(0).optString(JSON_VALUE));
+
+                weatherForecast.add(i, weather);
+
             }
 
             return weatherForecast;

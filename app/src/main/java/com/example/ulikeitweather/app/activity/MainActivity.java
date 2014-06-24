@@ -111,10 +111,6 @@ public class MainActivity extends ActionBarActivity {
         }
         //handle other ActionBar items
         switch (item.getItemId()) {
-            case R.id.menu_item_refresh:
-                GeoLocation.dontAskToTurnOnGPS = false;
-                currentFragment.loadView();
-                break;
             case R.id.menu_item_settings:
                 Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
