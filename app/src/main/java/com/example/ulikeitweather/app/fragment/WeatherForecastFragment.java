@@ -38,7 +38,7 @@ public class WeatherForecastFragment extends WeatherFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_weather_forecast, container, false);
+        return inflater.inflate(R.layout.fragment_forecast, container, false);
     }
 
     public void loadView() {
@@ -88,7 +88,7 @@ public class WeatherForecastFragment extends WeatherFragment {
             StringBuilder strBuilder = new StringBuilder();
             strBuilder.append((weather.getDayOfWeek() == null ? getActivity().getResources().getString(R.string.global_today) : weather.getDayOfWeek()) + ": ");
             strBuilder.append((new MySharedPrefs(getActivity()).isCelsius() ? weather.getTempC() + getActivity().getResources().getString(R.string.global_celsius_abbr)
-                    : weather.getTempF() + getActivity().getResources().getString(R.string.global_celsius_abbr) + ", "));
+                    : weather.getTempF() + getActivity().getResources().getString(R.string.global_fahrenheit_abbr)) + ", ");
             strBuilder.append(weather.getDescription());
             return strBuilder.toString();
         }

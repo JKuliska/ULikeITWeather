@@ -46,6 +46,9 @@
     <string name="dialog_no_internet">Cannot Connect to the Internet</string>
     <string name="dialog_no_internet_message">Turn on Internet to download latest weather?</string>
 
+    <string name="placeholder_empty">Empty</string>
+    <string name="placeholder_offline">Offline</string>
+
     <string name="toast_weather_not_displayed">Current weather cannot be displayed</string>
 
     <string-array name="view_list_share">

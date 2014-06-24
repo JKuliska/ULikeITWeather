@@ -90,7 +90,7 @@
     <eat-comment />
 
     <color name="actionbar_title">#FFFFFF</color>
-    <color name="fragment_background_default">#FFFFFF</color>
+    <color name="global_background_default">#FFFFFF</color>
     <color name="global_text">#000000</color>
     <color name="global_theme_blue">#96b5e4</color>
     <color name="view_activated_bg">#FFE5CC</color>
@@ -646,6 +646,8 @@
     <string name="global_wednesday">Wednesday</string>
     <string name="list_item_length">Units of length</string>
     <string name="list_item_temperature">Units of temperature</string>
+    <string name="placeholder_empty">Empty</string>
+    <string name="placeholder_offline">Offline</string>
     <string name="toast_weather_not_displayed">Current weather cannot be displayed</string>
     <!-- From: file:/D:/androidprojects/ULikeITWeather/app/build/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml -->
     <eat-comment />

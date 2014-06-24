@@ -1,5 +1,5 @@
 <!-- From: file:/D:/androidprojects/ULikeITWeather/app/src/main/AndroidManifest.xml -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" android:versionCode="500001" android:versionName="0.5.0" package="com.example.ulikeitweather.app">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" android:versionCode="500004" android:versionName="0.5.0" package="com.example.ulikeitweather.app">
     <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="19"/>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>

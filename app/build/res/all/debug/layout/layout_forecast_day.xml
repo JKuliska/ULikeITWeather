@@ -23,13 +23,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/global_metric_medium"
-                android:layout_alignTop="@id/img_weather_state_circle"
+                android:layout_alignTop="@+id/img_weather_state_circle"
                 android:layout_alignBottom="@id/img_weather_state_circle"
                 android:layout_alignRight="@id/img_weather_state_circle"
                 android:layout_alignLeft="@id/img_weather_state_circle" />
 
             <ImageView
-                android:id="@+id/img_weather_state_circle"
+                android:id="@id/img_weather_state_circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />

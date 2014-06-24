@@ -28,7 +28,7 @@ public class WeatherTodayFragment extends WeatherFragment implements OnCityLoade
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_weather_today, container, false);
+        return inflater.inflate(R.layout.fragment_today, container, false);
     }
 
     /*

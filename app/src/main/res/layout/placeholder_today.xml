@@ -127,9 +127,8 @@
             android:orientation="horizontal"
             android:layout_weight="10">
 
-    </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 
 </RelativeLayout>
-<!-- From: file:/D:/androidprojects/ULikeITWeather/app/src/main/res/layout/fragment_weather_today.xml -->

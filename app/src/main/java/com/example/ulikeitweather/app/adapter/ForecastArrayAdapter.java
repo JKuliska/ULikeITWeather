@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.example.ulikeitweather.app.R;
 import com.example.ulikeitweather.app.entity.Weather;
-import com.example.ulikeitweather.app.utility.Logcat;
 import com.example.ulikeitweather.app.utility.MySharedPrefs;
 
 import java.util.List;
@@ -106,7 +105,6 @@ public class ForecastArrayAdapter extends ArrayAdapter<Weather>{
         // Calculate full screen height
         DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
         height = metrics.heightPixels - actionBarHeight - notificationBarHeight;
-        Logcat.i("windowheight", height + "px");
         return height / (mIsPortrait ? 4 : 2);
     }
 

@@ -18,7 +18,7 @@
         android:choiceMode="singleChoice"
         android:dividerHeight="@dimen/view_listview_divider"
         android:divider="@color/global_theme_blue"
-        android:background="@color/fragment_background_default"/>
+        android:background="@color/global_background_default"/>
 </android.support.v4.widget.DrawerLayout>
 
 <!-- From: file:/D:/androidprojects/ULikeITWeather/app/src/main/res/layout/activity_default.xml -->
