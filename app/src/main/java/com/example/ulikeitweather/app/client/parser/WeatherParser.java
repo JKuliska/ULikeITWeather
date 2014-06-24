@@ -4,11 +4,15 @@ import android.content.Context;
 
 import com.example.ulikeitweather.app.R;
 import com.example.ulikeitweather.app.entity.Weather;
+import com.example.ulikeitweather.app.utility.Logcat;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -18,11 +22,25 @@ import java.util.Calendar;
 public class WeatherParser {
 
     private static final int FORECAST_DAYS = 4;
+    private static final String JSON_MAIN_NODE_NAME = "data";
+    private static final String JSON_CURRENT_CONDITION = "current_condition";
+    private static final String JSON_TEMP_C = "temp_C";
+    private static final String JSON_TEMP_F = "temp_F";
+    private static final String JSON_IMG_URL = "weatherIconUrl";
+    private static final String JSON_DESCRIPTION = "weatherDesc";
+    private static final String JSON_WIND_KPH = "windspeedKmph";
+    private static final String JSON_WIND_MPH = "windspeedMiles";
+    private static final String JSON_WIND_DIR = "winddir16Point";
+    private static final String JSON_PRECIPITATION = "precipMM";
+    private static final String JSON_HUMIDITY = "humidity";
+    private static final String JSON_PRESSURE = "pressure";
+    private static final String JSON_VALUE = "value";
+    private static final String JSON_DATE = "date";
+    private static final String JSON_WEATHER = "weather";
 
     private Context mContext;
     private Weather[] mWeatherForecast; //4 days of forecast
     private Weather mWeatherToday; //one current day
-    private String[] mCsvString; //string array containing all 5 days in CSV format
 
 
     public Weather getWeatherToday() {
@@ -37,37 +55,39 @@ public class WeatherParser {
 
     public WeatherParser(Context context, String file) {
         mContext = context;
-        mCsvString = getStringFromFile(file);
-        getToday();
-        getFourDayForecast();
+        JSONObject jsonObject = getJsonFromFile(file);
+        mWeatherToday = getToday(jsonObject);
+        mWeatherForecast = getFourDayForecast(jsonObject);
     }
 
 
     /*
     Extracts day weather information from the downloaded csv file
     @params: file is the whole string downloaded from website
-     @return: 5-item array, each item containing weather information about one day
+     @return: Json object containing the weather information or null if the parsing was not successful due to JsonException
      */
-    private String[] getStringFromFile(String file) {
+    private JSONObject getJsonFromFile(String file) {
         StringBuilder mStrBuilder = new StringBuilder();
         try {
             FileInputStream fIn = mContext.openFileInput(file);
             int ch;
-            while((ch = fIn.read()) != -1) {
-                mStrBuilder.append((char)ch);
+            while ((ch = fIn.read()) != -1) {
+                mStrBuilder.append((char) ch);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String[] mSplitByHash = mStrBuilder.toString().split("#");
-        String[] mSplitByNewline = mSplitByHash[mSplitByHash.length - 1].split("\n");
-        String[] mRemovedFirstEmptyLine = new String[mSplitByNewline.length - 1];
-        for(int i = 1; i < mSplitByNewline.length ; i++) {
-            mRemovedFirstEmptyLine[i-1] = mSplitByNewline[i];
+
+        JSONObject jsonResponse;
+        try {
+            jsonResponse = new JSONObject(mStrBuilder.toString());
+            return jsonResponse;
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        return mRemovedFirstEmptyLine;
+        return null;
     }
 
     /*
@@ -76,64 +96,96 @@ public class WeatherParser {
     @return: name of a day of the week
      */
     private String getDayOfWeek(String date) {
-        SimpleDateFormat mSdf = new SimpleDateFormat("EEEE");
         Calendar mCalender = Calendar.getInstance();
         String[] calStr = date.split("-");
-        mCalender.set(Integer.parseInt(calStr[0]), Integer.parseInt(calStr[1])-1, Integer.parseInt(calStr[2]));
+        mCalender.set(Integer.parseInt(calStr[0]), Integer.parseInt(calStr[1]) - 1, Integer.parseInt(calStr[2]));
         int dayOfTheWeek = mCalender.get(Calendar.DAY_OF_WEEK);
         switch (dayOfTheWeek) {
-            case Calendar.MONDAY: return mContext.getResources().getString(R.string.global_monday);
-            case Calendar.TUESDAY: return mContext.getResources().getString(R.string.global_tuesday);
-            case Calendar.WEDNESDAY: return mContext.getResources().getString(R.string.global_wednesday);
-            case Calendar.THURSDAY: return mContext.getResources().getString(R.string.global_thursday);
-            case Calendar.FRIDAY: return mContext.getResources().getString(R.string.global_friday);
-            case Calendar.SATURDAY: return mContext.getResources().getString(R.string.global_saturday);
-            case Calendar.SUNDAY: return mContext.getResources().getString(R.string.global_sunday);
-            default: return "";
+            case Calendar.MONDAY:
+                return mContext.getResources().getString(R.string.global_monday);
+            case Calendar.TUESDAY:
+                return mContext.getResources().getString(R.string.global_tuesday);
+            case Calendar.WEDNESDAY:
+                return mContext.getResources().getString(R.string.global_wednesday);
+            case Calendar.THURSDAY:
+                return mContext.getResources().getString(R.string.global_thursday);
+            case Calendar.FRIDAY:
+                return mContext.getResources().getString(R.string.global_friday);
+            case Calendar.SATURDAY:
+                return mContext.getResources().getString(R.string.global_saturday);
+            case Calendar.SUNDAY:
+                return mContext.getResources().getString(R.string.global_sunday);
+            default:
+                return "";
         }
     }
 
     /*
     gets the forecast for the next 4 days and stores it in a mWeatherForecast array
      */
-    private void getFourDayForecast() {
-        mWeatherForecast = new Weather[FORECAST_DAYS];
-        for(int i = 0; i < FORECAST_DAYS; i++) {
-            String[] strOneDayArray = mCsvString[i+1].split(",");
-            mWeatherForecast[i] = new Weather();
-            mWeatherForecast[i].setTempC(strOneDayArray[1]);
-            mWeatherForecast[i].setTempF(strOneDayArray[2]);
-            mWeatherForecast[i].setImgUrl(strOneDayArray[10]);
-            mWeatherForecast[i].setDescription(strOneDayArray[11]);
-            mWeatherForecast[i].setDayOfWeek(getDayOfWeek(strOneDayArray[0]));
+    private Weather[] getFourDayForecast(JSONObject jsonObject) {
+        Weather[] weatherForecast = new Weather[FORECAST_DAYS];
+
+        JSONObject jsonMainNode = jsonObject.optJSONObject(JSON_MAIN_NODE_NAME);
+        try {
+            JSONArray jsonArray = jsonMainNode.getJSONArray(JSON_WEATHER);
+
+            int lengthJsonArray = jsonArray.length();
+
+            for(int i = 0; i < lengthJsonArray; i++) {
+
+                JSONObject jsonChildNode = jsonArray.getJSONObject(i);
+
+                weatherForecast[i] = new Weather();
+                weatherForecast[i].setTempC(jsonChildNode.optString(JSON_TEMP_C));
+                weatherForecast[i].setTempF(jsonChildNode.optString(JSON_TEMP_F));
+                weatherForecast[i].setDayOfWeek(getDayOfWeek(jsonChildNode.optString(JSON_DATE)));
+
+
+                JSONArray jsonChildArray = jsonChildNode.getJSONArray(JSON_DESCRIPTION);
+                weatherForecast[i].setDescription(jsonChildArray.getJSONObject(0).optString(JSON_VALUE));
+                jsonChildArray = jsonChildNode.getJSONArray(JSON_IMG_URL);
+                weatherForecast[i].setImgUrl(jsonChildArray.getJSONObject(0).optString(JSON_VALUE));
+            }
+
+            return weatherForecast;
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
+        return null;
     }
 
     /*
      gets the current weather for today and stores it in a variable mWeatherToday
      */
-    private void getToday() {
-        mWeatherToday = new Weather();
-        String[] strTodayArray = mCsvString[0].split(",");
-        mWeatherToday.setTempC(strTodayArray[1]);
-        mWeatherToday.setTempF(convertCelsiusToFahrenheit(Integer.parseInt(strTodayArray[1])) + "");
-        mWeatherToday.setImgUrl(strTodayArray[3]);
-        mWeatherToday.setDescription(strTodayArray[4]);
-        mWeatherToday.setWindSpeedMph(strTodayArray[5]);
-        mWeatherToday.setWindSpeedKmh(strTodayArray[6]);
-        mWeatherToday.setWindDir(strTodayArray[8]);
-        mWeatherToday.setPrecip(strTodayArray[9]);
-        mWeatherToday.setHumidity(strTodayArray[10]);
-        mWeatherToday.setPressure(strTodayArray[12]);
-    }
+    private Weather getToday(JSONObject jsonObject) {
+        Weather weatherToday = new Weather();
+        if(jsonObject != null) {
+            JSONObject jsonMainNode = jsonObject.optJSONObject(JSON_MAIN_NODE_NAME);
+            try {
+                JSONArray jsonArray = jsonMainNode.getJSONArray(JSON_CURRENT_CONDITION);
+                JSONObject jsonChildNode = jsonArray.getJSONObject(0);
 
+                weatherToday.setTempC(jsonChildNode.optString(JSON_TEMP_C));
+                weatherToday.setTempF(jsonChildNode.optString(JSON_TEMP_F));
+                weatherToday.setWindSpeedMph(jsonChildNode.optString(JSON_WIND_MPH));
+                weatherToday.setWindSpeedKmh(jsonChildNode.optString(JSON_WIND_KPH));
+                weatherToday.setWindDir(jsonChildNode.optString(JSON_WIND_DIR));
+                weatherToday.setPrecip(jsonChildNode.optString(JSON_PRECIPITATION));
+                weatherToday.setHumidity(jsonChildNode.optString(JSON_HUMIDITY));
+                weatherToday.setPressure(jsonChildNode.optString(JSON_PRESSURE));
 
-    /*
-    converts celsius to fahrenheit
-    @params: integer value of celsius
-    @return: according value of temperature in fahrenheit
-     */
-    private int convertCelsiusToFahrenheit(int celsius) {
-        return ((celsius * 9) / 5) + 32;
+                JSONArray jsonChildArray = jsonChildNode.getJSONArray(JSON_IMG_URL);
+                weatherToday.setImgUrl(jsonChildArray.getJSONObject(0).optString(JSON_VALUE));
+                jsonChildArray = jsonChildNode.getJSONArray(JSON_DESCRIPTION);
+                weatherToday.setDescription(jsonChildArray.getJSONObject(0).optString(JSON_VALUE));
+
+                return weatherToday;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 }

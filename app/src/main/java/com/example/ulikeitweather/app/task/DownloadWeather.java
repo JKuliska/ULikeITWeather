@@ -30,7 +30,7 @@ public class DownloadWeather extends AsyncTask<MyLocation, Void, String> {
     private static final String URL_PREFIX = "http://api.worldweatheronline.com/free/v1/weather.ashx?key=";
     private static final String QUERY_LOCATION = "&q=";
     private static final String QUERY_NUM_OF_DAYS = "&num_of_days=4";
-    private static final String QUERY_FORMAT_CSV = "&format=csv";
+    private static final String QUERY_FORMAT_CSV = "&format=json";
     private Context mContext;
     private OnWeatherDownloadedListener mWeatherDownloadedListener = null;
 
