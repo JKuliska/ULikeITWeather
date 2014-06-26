@@ -5,13 +5,12 @@
     android:animateLayoutChanges="true">
 
     <ScrollView
-        android:id="@+id/container_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:background="@color/global_background_default">
-
-        <include layout="@layout/placeholder_forecast" />
+        <include layout="@layout/placeholder_forecast"
+            android:id="@+id/container_content" />
 
     </ScrollView>
 

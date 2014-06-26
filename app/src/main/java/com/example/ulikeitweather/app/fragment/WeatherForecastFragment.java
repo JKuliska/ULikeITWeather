@@ -20,7 +20,6 @@ import com.example.ulikeitweather.app.R;
 import com.example.ulikeitweather.app.adapter.ForecastArrayAdapter;
 import com.example.ulikeitweather.app.client.parser.WeatherParser;
 import com.example.ulikeitweather.app.dialog.ShareDialog;
-import com.example.ulikeitweather.app.utility.Logcat;
 import com.example.ulikeitweather.app.utility.MySharedPrefs;
 import com.example.ulikeitweather.app.entity.Weather;
 import com.example.ulikeitweather.app.task.DownloadIconTask;

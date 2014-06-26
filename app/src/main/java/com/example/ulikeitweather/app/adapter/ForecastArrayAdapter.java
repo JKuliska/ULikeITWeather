@@ -124,4 +124,9 @@ public class ForecastArrayAdapter extends ArrayAdapter<Weather>{
         TextView weatherDescText;
         ImageView iconImg;
     }
+
+    public void stop()
+    {
+        // TODO: stop image loader
+    }
 }

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<translate xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fromXDelta="-300%" android:toXDelta="0%"  android:duration="500"  /><!-- From: file:/D:/androidprojects/ULikeITWeather/app/src/main/res/anim/fly_in_from_left.xml -->

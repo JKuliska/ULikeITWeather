@@ -18,14 +18,38 @@ public class Weather {
     private String mWindSpeedMph;
     private String mWindDir;
 
+    public Weather() {
 
-    public String getDayOfWeek() { return mDayOfWeek; }
+    }
+
+    public Weather(Weather weather) {
+        if (weather.getDayOfWeek() != null) mDayOfWeek = weather.getDayOfWeek();
+        if (weather.getDescription() != null) mDescription = weather.getDescription();
+        if (weather.getImgUrl() != null) mImgUrl = weather.getImgUrl();
+        if (weather.getTempC() != null) mTempC = weather.getTempC();
+        if (weather.getTempF() != null) mTempF = weather.getTempF();
+        if (weather.getPrecip() != null) mPrecip = weather.getPrecip();
+        if (weather.getHumidity() != null) mHumidity = weather.getHumidity();
+        if (weather.getPressure() != null) mPressure = weather.getPressure();
+        if (weather.getWindSpeedKmh() != null) mWindSpeedKmh = weather.getWindSpeedKmh();
+        if (weather.getWindSpeedMph() != null) mWindSpeedMph = weather.getWindSpeedMph();
+        if (weather.getWindDir() != null) mWindDir = weather.getWindDir();
+
+    }
+
+    public String getDayOfWeek() {
+        return mDayOfWeek;
+    }
 
 
-    public void setDayOfWeek(String dayOfWeek) { this.mDayOfWeek = dayOfWeek; }
+    public void setDayOfWeek(String dayOfWeek) {
+        this.mDayOfWeek = dayOfWeek;
+    }
 
 
-    public String getTempC() { return mTempC; }
+    public String getTempC() {
+        return mTempC;
+    }
 
 
     public void setTempC(String tempC) {
