@@ -38,12 +38,6 @@ release.properties
 *.iml
 *.ipr
 *.iws
-.idea/scopes/scope_settings.xml
-.idea/libraries/*
-.idea/inspectionProfiles/*
-.idea/copyright/*
-.idea/*
-.idea/
 out/
 
 # Mac
