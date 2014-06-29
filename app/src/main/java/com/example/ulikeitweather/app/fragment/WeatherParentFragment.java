@@ -27,6 +27,7 @@ import com.example.ulikeitweather.app.geolocation.OnCityLoadedListener;
 import com.example.ulikeitweather.app.listener.AnimateImageLoadingListener;
 import com.example.ulikeitweather.app.task.TaskFragment;
 import com.example.ulikeitweather.app.utility.Logcat;
+import com.example.ulikeitweather.app.utility.MySharedPrefs;
 import com.example.ulikeitweather.app.utility.NetworkManager;
 import com.example.ulikeitweather.app.view.ViewState;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -105,8 +106,6 @@ public abstract class WeatherParentFragment extends TaskFragment implements APIC
         this.mImageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
         // image caching options
         mDisplayImageOptions = new DisplayImageOptions.Builder()
-                .showImageForEmptyUri(R.drawable.ic_wind_speed)
-                .showImageOnFail(R.drawable.ic_action_cloud)
                 .cacheInMemory(true)
                 .displayer(new SimpleBitmapDisplayer())
                 .build();
@@ -412,8 +411,13 @@ public abstract class WeatherParentFragment extends TaskFragment implements APIC
 
     protected abstract void renderView();
 
-    protected void setImageOptions() {
-
+    protected String buildShareMessage(Weather weather) {
+        StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append((weather.getDayOfWeek() == null ? getActivity().getResources().getString(R.string.global_today) : weather.getDayOfWeek()) + ", " + mLocation.getCity() +": ");
+        strBuilder.append((new MySharedPrefs(getActivity()).isCelsius() ? weather.getTempC() + getActivity().getResources().getString(R.string.global_celsius_abbr)
+                : weather.getTempF() + getActivity().getResources().getString(R.string.global_fahrenheit_abbr) + ", "));
+        strBuilder.append(weather.getDescription());
+        return strBuilder.toString();
     }
 
 }

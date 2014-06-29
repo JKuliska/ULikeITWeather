@@ -38,7 +38,7 @@ release.properties
 *.iml
 *.ipr
 *.iws
-.idea/**
+.idea/
 out/
 
 # Mac
@@ -47,3 +47,7 @@ out/
 # Crashlytics
 crashlytics.properties
 crashlytics-build.properties
+
+# Keys
+extras/keystore/ulikeitweather.keystore
+extras/keystore/ulikeitweather.properties

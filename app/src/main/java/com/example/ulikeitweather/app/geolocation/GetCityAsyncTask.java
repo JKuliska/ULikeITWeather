@@ -64,12 +64,13 @@ public class GetCityAsyncTask extends AsyncTask<MyLocation, Void, String> {
             Address address = addresses.get(0);
 
             //format and return the city and country text
-            return String.format("%s, %s",
+            return
                     // Locality is usually a city
-                    address.getLocality(),
+                    (address.getLocality() != null ? address.getLocality() + ", "
+                            //Locality sometimes returns null, in that case the subLocality is used if not null
+                            : (address.getSubLocality() != null ? address.getSubLocality() + ", " : "" )) +
                     // The country of the address
-                    address.getCountryName()
-            );
+                    (address.getCountryName() != null ? address.getCountryName() : "");
         } else {
             return mContext.getResources().getString(R.string.global_unspecified_location);
         }
