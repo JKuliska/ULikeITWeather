@@ -38,10 +38,11 @@ release.properties
 *.iml
 *.ipr
 *.iws
-.idea/scopes
-.idea/libraries
-.idea/inspectionProfiles
-.idea/copyright
+.idea/scopes/*
+.idea/libraries/*
+.idea/inspectionProfiles/*
+.idea/copyright/*
+.idea/*
 .idea/
 out/
 
