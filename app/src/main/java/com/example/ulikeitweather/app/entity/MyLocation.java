@@ -1,5 +1,7 @@
 package com.example.ulikeitweather.app.entity;
 
+import android.location.Location;
+
 /**
  * stores name of a city and according longitude and latitude
  */
@@ -9,6 +11,14 @@ public class MyLocation {
     private double mLongitude;
     private String mCity;
 
+    public MyLocation() {
+
+    }
+
+    public MyLocation(Location location) {
+        setLatitude(location.getLatitude());
+        setLongitude(location.getLongitude());
+    }
 
     public double getLatitude() {
         return mLatitude;

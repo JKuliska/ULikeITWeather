@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.ulikeitweather.app.R;
 import com.example.ulikeitweather.app.entity.Weather;
+import com.example.ulikeitweather.app.utility.Logcat;
 import com.example.ulikeitweather.app.utility.MySharedPrefs;
 
 import java.util.List;
@@ -124,6 +125,8 @@ public class ForecastArrayAdapter extends ArrayAdapter<Weather>{
         TextView weatherDescText;
         ImageView iconImg;
     }
+
+
 
     public void stop()
     {

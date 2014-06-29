@@ -4,24 +4,26 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true">
 
+    <include
+        layout="@layout/placeholder_today"
+        android:id="@+id/container_content"/>
 
-
-        <include layout="@layout/placeholder_today" />
-
-
-    <include layout="@layout/placeholder_progress"
+    <include
+        layout="@layout/placeholder_progress"
         android:id="@+id/container_progress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone" />
 
-    <include layout="@layout/placeholder_offline"
+    <include
+        layout="@layout/placeholder_offline"
         android:id="@+id/container_offline"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone" />
 
-    <include layout="@layout/placeholder_empty"
+    <include
+        layout="@layout/placeholder_empty"
         android:id="@+id/container_empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -1,15 +1,14 @@
 package com.example.ulikeitweather.app.task;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
+import android.support.v4.app.Fragment;
 
+import java.util.LinkedList;
+import java.util.List;
 
-public class TaskListFragment extends ListFragment implements TaskManager
+public class TaskFragment extends Fragment implements TaskManager
 {
     private final Object mLock = new Object();
     private Boolean mReady = false;
@@ -75,7 +74,7 @@ public class TaskListFragment extends ListFragment implements TaskManager
 
     private void runNow(Runnable runnable)
     {
-        //Logcat.d("TaskListFragment.runNow(): " + runnable.getClass().getEnclosingMethod());
+        //Logcat.d("TaskFragment.runNow(): " + runnable.getClass().getEnclosingMethod());
         getActivity().runOnUiThread(runnable);
     }
 
@@ -84,7 +83,7 @@ public class TaskListFragment extends ListFragment implements TaskManager
     {
         synchronized(mLock)
         {
-            //Logcat.d("TaskListFragment.addPending(): " + runnable.getClass().getEnclosingMethod());
+            //Logcat.d("TaskFragment.addPending(): " + runnable.getClass().getEnclosingMethod());
             mPendingCallbacks.add(runnable);
         }
     }

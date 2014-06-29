@@ -1,120 +1,177 @@
 package com.example.ulikeitweather.app.geolocation;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationManager;
 import android.location.LocationListener;
+import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.widget.Toast;
 
-import com.example.ulikeitweather.app.R;
-import com.example.ulikeitweather.app.entity.MyLocation;
+import com.example.ulikeitweather.app.utility.Logcat;
 
-/**
- * obtains the location if it is available
- */
+import java.lang.ref.WeakReference;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class GeoLocation implements LocationListener {
+public class Geolocation implements LocationListener
+{
+    private static final int LOCATION_AGE = 60000 * 30; // milliseconds
+    private static final int LOCATION_TIMEOUT = 30000; // milliseconds
 
-    public static boolean dontAskToTurnOnGPS = false; //flag so that the dialog prompting to turn on GPS does not pop up too often
-
-    private Context mContext;
-    private MyLocation myLocation = new MyLocation();
-
-    private boolean canGetLocation = false;
+    private WeakReference<GeolocationListener> mListener;
+    private LocationManager mLocationManager;
+    private Location mCurrentLocation;
+    private Timer mTimer;
 
 
-    public GeoLocation(Context context) {
-        mContext = context;
-        getLoc();
+    public Geolocation(LocationManager locationManager, GeolocationListener listener)
+    {
+        mLocationManager = locationManager; // (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
+        mListener = new WeakReference<GeolocationListener>(listener);
+        mTimer = new Timer();
+        init();
     }
 
 
-    public boolean canGetLocation() {
-        return canGetLocation;
-    }
+    private void init()
+    {
+        // get last known location
+        Location lastKnownLocation = getLastKnownLocation(mLocationManager);
 
+        // try to listen last known location
+        if(lastKnownLocation != null)
+        {
+            onLocationChanged(lastKnownLocation);
+        }
 
-    public MyLocation getMyLocation() {
-        return myLocation;
-    }
-
-    /*
-    creates a dialog to prompt a user to turn on GPS for the case the location is not available
-     */
-
-    private void geoLocDialog() {
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which){
-                    case DialogInterface.BUTTON_POSITIVE:
-                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        mContext.startActivity(intent);
-                        getLoc();
-                        break;
-
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        dialog.cancel();
-                        Toast.makeText(mContext, mContext.getResources().getString(R.string.toast_weather_not_displayed), Toast.LENGTH_LONG).show();
-                        break;
+        if(mCurrentLocation == null)
+        {
+            // start timer to check timeout
+            TimerTask task = new TimerTask()
+            {
+                public void run()
+                {
+                    if(mCurrentLocation == null)
+                    {
+                        Logcat.d("Geolocation.timer: timeout");
+                        stop();
+                        GeolocationListener listener = mListener.get();
+                        if(listener != null) listener.onGeolocationFail(Geolocation.this);
+                    }
                 }
+            };
+            mTimer.schedule(task, LOCATION_TIMEOUT);
+
+            // register location updates
+            try
+            {
+                mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0l, 0.0f, this);
             }
-        };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setTitle(mContext.getResources().getString(R.string.dialog_geoloc_title))
-                .setMessage(mContext.getResources().getString(R.string.dialog_geoloc_message))
-                .setPositiveButton(mContext.getResources().getString(R.string.dialog_yes), dialogClickListener)
-                .setNegativeButton(mContext.getResources().getString(R.string.dialog_no), dialogClickListener)
-                .show();
-    }
-
-    /*
-    obtains the location based on the best available provider
-     */
-    private void getLoc() {
-        LocationManager mLocationManager;
-        mLocationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
-        // Define the criteria how to select the locatioin provider -> use
-        // default
-        Criteria criteria = new Criteria();
-        String mProvider = mLocationManager.getBestProvider(criteria, false);
-        Location location = mLocationManager.getLastKnownLocation(mProvider);
-
-        // Initialize the location fields
-        if (location != null) {
-            canGetLocation = true;
-            myLocation.setLongitude(location.getLongitude());
-            myLocation.setLatitude(location.getLatitude());
-        } else {
-            canGetLocation = false;
-            if(!dontAskToTurnOnGPS) {
-                geoLocDialog();
-                dontAskToTurnOnGPS = true;
+            catch(IllegalArgumentException e)
+            {
+                e.printStackTrace();
+            }
+            try
+            {
+                mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0l, 0.0f, this);
+            }
+            catch(IllegalArgumentException e)
+            {
+                e.printStackTrace();
             }
         }
     }
 
 
-    @Override
-    public void onLocationChanged(Location location) { }
+    public void stop()
+    {
+        Logcat.d("Geolocation.stop()");
+        if(mTimer!=null) mTimer.cancel();
+        if(mLocationManager!=null)
+        {
+            mLocationManager.removeUpdates(this);
+            mLocationManager = null;
+        }
+    }
 
 
     @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) { }
+    public void onLocationChanged(Location location)
+    {
+        Logcat.d("Geolocation.onLocationChanged(): " + location.getProvider() + " / " + location.getLatitude() + " / " + location.getLongitude() + " / " + new Date(location.getTime()).toString());
+
+        // check location age
+        long timeDelta = System.currentTimeMillis() - location.getTime();
+        if(timeDelta > LOCATION_AGE)
+        {
+            Logcat.d("Geolocation.onLocationChanged(): gotten location is too old");
+            // gotten location is too old
+            return;
+        }
+
+        // return location
+        mCurrentLocation = new Location(location);
+        stop();
+        GeolocationListener listener = mListener.get();
+        if(listener!=null && location!=null) listener.onGeolocationRespond(Geolocation.this, mCurrentLocation);
+    }
 
 
     @Override
-    public void onProviderEnabled(String provider) { }
+    public void onProviderDisabled(String provider)
+    {
+        Logcat.d("Geolocation.onProviderDisabled(): " + provider);
+    }
 
 
     @Override
-    public void onProviderDisabled(String provider) { }
+    public void onProviderEnabled(String provider)
+    {
+        Logcat.d("Geolocation.onProviderEnabled(): " + provider);
+    }
 
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras)
+    {
+        Logcat.d("Geolocation.onStatusChanged(): " + provider);
+        switch(status)
+        {
+            case LocationProvider.OUT_OF_SERVICE:
+                Logcat.d("Geolocation.onStatusChanged(): status OUT_OF_SERVICE");
+                break;
+            case LocationProvider.TEMPORARILY_UNAVAILABLE:
+                Logcat.d("Geolocation.onStatusChanged(): status TEMPORARILY_UNAVAILABLE");
+                break;
+            case LocationProvider.AVAILABLE:
+                Logcat.d("Geolocation.onStatusChanged(): status AVAILABLE");
+                break;
+        }
+    }
+
+
+    // returns last known freshest location from network or GPS
+    private Location getLastKnownLocation(LocationManager locationManager)
+    {
+        Logcat.d("Geolocation.getLastKnownLocation()");
+
+        Location locationNet = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        Location locationGps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+        long timeNet = 0l;
+        long timeGps = 0l;
+
+        if(locationNet!=null)
+        {
+            timeNet = locationNet.getTime();
+        }
+
+        if(locationGps!=null)
+        {
+            timeGps = locationGps.getTime();
+        }
+
+        if(timeNet>timeGps) return locationNet;
+        else return locationGps;
+    }
 }

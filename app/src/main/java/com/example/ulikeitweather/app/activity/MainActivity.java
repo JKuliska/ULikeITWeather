@@ -14,14 +14,12 @@ import android.widget.ListView;
 
 import com.example.ulikeitweather.app.R;
 import com.example.ulikeitweather.app.entity.DrawerItem;
-import com.example.ulikeitweather.app.fragment.WeatherForecastFragment;
-import com.example.ulikeitweather.app.fragment.WeatherFragment;
-import com.example.ulikeitweather.app.fragment.WeatherTodayFragment;
 import com.example.ulikeitweather.app.adapter.DrawerArrayAdapter;
-import com.example.ulikeitweather.app.geolocation.GeoLocation;
+import com.example.ulikeitweather.app.fragment.ForecastFragment;
+import com.example.ulikeitweather.app.fragment.TodayFragment;
+import com.example.ulikeitweather.app.fragment.WeatherParentFragment;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -34,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerListView;
     private ActionBarDrawerToggle mDrawerToggle;
-    private WeatherFragment currentFragment; //currently active fragment
+    private WeatherParentFragment currentFragment; //currently active fragment
 
 
     @Override
@@ -45,7 +43,7 @@ public class MainActivity extends ActionBarActivity {
 
         //run WeatherTodayFragment as the initial fragment
         if (savedInstanceState == null) {
-            currentFragment = new WeatherTodayFragment();
+            currentFragment = new TodayFragment();
             getSupportFragmentManager().beginTransaction().add(R.id.lyt_main, currentFragment).commit();
             setTitle(getResources().getString(R.string.ac_today));
         }
@@ -134,10 +132,10 @@ public class MainActivity extends ActionBarActivity {
         private void drawerSelectItem(int position) {
             switch (position) {
                 case 1:
-                    currentFragment = new WeatherForecastFragment();
+                    currentFragment = new ForecastFragment();
                     break;
                 default:
-                    currentFragment = new WeatherTodayFragment();
+                    currentFragment = new TodayFragment();
                     break;
             }
             // Insert the fragment by replacing any existing fragment

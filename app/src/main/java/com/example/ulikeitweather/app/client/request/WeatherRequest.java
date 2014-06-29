@@ -1,4 +1,6 @@
 package com.example.ulikeitweather.app.client.request;
+import android.content.Context;
+
 import com.example.ulikeitweather.app.client.parser.WeatherJsonParser;
 import com.example.ulikeitweather.app.client.response.Response;
 import com.example.ulikeitweather.app.entity.MyLocation;
@@ -19,7 +21,6 @@ import java.util.List;
 public class WeatherRequest extends Request
 {
     private static final String REQUEST_METHOD = "POST";
-    private static final String REQUEST_PATH = "example";
     private static final String KEY = "979fe88c1bedef59ad9bff0f8e3d7af90bf81f53";
     private static final String URL_PREFIX = "http://api.worldweatheronline.com/free/v1/weather.ashx?key=";
     private static final String QUERY_LOCATION = "&q=";
@@ -27,11 +28,13 @@ public class WeatherRequest extends Request
     private static final String QUERY_FORMAT_CSV = "&format=json";
 
     private MyLocation mLocation;
+    private Context mContext;
 
 
-    public WeatherRequest(MyLocation location)
+    public WeatherRequest(MyLocation location, Context context)
     {
         mLocation = location;
+        mContext = context;
     }
 
 
@@ -52,7 +55,7 @@ public class WeatherRequest extends Request
     @Override
     public Response<List<Weather>> parseResponse(InputStream stream) throws IOException, JsonParseException
     {
-        return WeatherJsonParser.parse(stream);
+        return WeatherJsonParser.parse(stream, mContext);
     }
 
 
