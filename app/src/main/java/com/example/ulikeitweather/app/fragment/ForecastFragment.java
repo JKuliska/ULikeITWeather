@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
 
 import com.example.ulikeitweather.app.R;
 import com.example.ulikeitweather.app.adapter.ForecastArrayAdapter;
+import com.example.ulikeitweather.app.dialog.ShareDialog;
 import com.example.ulikeitweather.app.entity.Weather;
 import com.example.ulikeitweather.app.utility.Logcat;
 
@@ -51,12 +53,19 @@ public class ForecastFragment extends WeatherParentFragment {
         if(mOrientationIsPortrait) {
             ListView forecastListView = (ListView) getActivity().findViewById(R.id.forecast_list);
             forecastListView.setAdapter(mForecastAdapter);
+            forecastListView.setOnItemClickListener(new OnItemClickShareListener());
         } else {
-            GridView forecastListView = (GridView) getActivity().findViewById(R.id.forecast_grid);
-            forecastListView.setAdapter(mForecastAdapter);
+            GridView forecastGridView = (GridView) getActivity().findViewById(R.id.forecast_grid);
+            forecastGridView.setAdapter(mForecastAdapter);
+            forecastGridView.setOnItemClickListener(new OnItemClickShareListener());
         }
-
     }
 
-
+    private class OnItemClickShareListener implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            ShareDialog dialog = ShareDialog.newInstance(buildShareMessage(mForecastList.get(position)));
+            dialog.show(getFragmentManager(), "");
+        }
+    }
 }

@@ -4,17 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.ulikeitweather.app.R;
+import com.example.ulikeitweather.app.dialog.ShareDialog;
 import com.example.ulikeitweather.app.entity.Weather;
-import com.example.ulikeitweather.app.listener.AnimateImageLoadingListener;
 import com.example.ulikeitweather.app.utility.Logcat;
 import com.example.ulikeitweather.app.utility.MySharedPrefs;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 public class TodayFragment extends WeatherParentFragment {
@@ -87,6 +86,17 @@ public class TodayFragment extends WeatherParentFragment {
 
         // image caching
         mImageLoader.displayImage(mWeather.getImgUrl(), photoImageView, mDisplayImageOptions, mImageLoadingListener);
+
+
+        //set share listener
+        LinearLayout mLayoutFull = (LinearLayout) getActivity().findViewById(R.id.lyt_today_full);
+        mLayoutFull.setOnClickListener(new AdapterView.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareDialog dialog = ShareDialog.newInstance(buildShareMessage(mWeather));
+                dialog.show(getFragmentManager(), "");
+            }
+        });
     }
 
     private String buildDescriptionText(MySharedPrefs prefs) {

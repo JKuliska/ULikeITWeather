@@ -135,9 +135,8 @@ public class ForecastArrayAdapter extends ArrayAdapter<Weather>{
     }
 
 
-
     public void stop()
     {
-        // TODO: stop image loader
+        mImageLoader.stop();
     }
 }

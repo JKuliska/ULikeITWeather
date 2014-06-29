@@ -63,16 +63,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e0a2d2-6bfd-4032-9c76-3df87125814a" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\androidprojects\ULikeITWeather\app\src\main\java\com\example\ulikeitweather\app\listener\OnCityLoadedListener.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\androidprojects\ULikeITWeather\app\src\main\java\com\example\ulikeitweather\app\task\GetCityAsyncTask.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\androidprojects\ULikeITWeather\app\src\main\java\com\example\ulikeitweather\app\listener\OnClickListenerShare.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\androidprojects\ULikeITWeather\app\src\main\java\com\example\ulikeitweather\app\task\DownloadIconTask.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\androidprojects\ULikeITWeather\app\src\main\java\com\example\ulikeitweather\app\task\DownloadWeather.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/adapter/ForecastArrayAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/adapter/ForecastArrayAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/ForecastFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/ForecastFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/TodayFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/TodayFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/WeatherParentFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/WeatherParentFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_forecast_day.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_forecast_day.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/placeholder_today.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/placeholder_today.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/placeholder_today.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/placeholder_today.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ULikeITWeather.iws" />
@@ -129,24 +126,11 @@
       <file leaf-file-name="ForecastFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/ForecastFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="386" max-vertical-offset="918">
-              <caret line="49" column="142" selection-start-line="49" selection-start-column="142" selection-end-line="49" selection-end-column="142" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1037">
+              <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
               <folding>
-                <element signature="e#984#1030#0" expanded="true" />
+                <element signature="e#1077#1123#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout_forecast_day.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_forecast_day.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.666667" vertical-offset="226" max-vertical-offset="1377">
-              <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -154,64 +138,40 @@
       <file leaf-file-name="TodayFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/TodayFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
-              <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-              <folding>
-                <element signature="e#1270#1313#0" expanded="true" />
-                <element signature="e#2914#2982#0" expanded="true" />
-                <element signature="e#3096#3166#0" expanded="true" />
-                <element signature="e#3277#3341#0" expanded="true" />
-                <element signature="e#3480#3544#0" expanded="true" />
-                <element signature="e#3592#3656#0" expanded="true" />
-                <element signature="e#4321#4389#0" expanded="true" />
-                <element signature="e#4430#4501#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ForecastArrayAdapter.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/adapter/ForecastArrayAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30451128" vertical-offset="807" max-vertical-offset="2193">
-              <caret line="77" column="74" selection-start-line="77" selection-start-column="74" selection-end-line="77" selection-end-column="74" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WeatherParentFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/WeatherParentFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2282" max-vertical-offset="7123">
-              <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1225" max-vertical-offset="1955">
+              <caret line="96" column="16" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2975#2984#0" expanded="true" />
-                <element signature="e#5216#6030#0" expanded="true" />
-                <element signature="e#5646#5907#0" expanded="true" />
-                <element signature="e#5888#5889#0" expanded="true" />
-                <element signature="e#6019#6020#0" expanded="true" />
-                <element signature="e#11222#11264#0" expanded="true" />
-                <element signature="e#11386#11425#0" expanded="true" />
-                <element signature="e#11548#11585#0" expanded="true" />
-                <element signature="e#11704#11744#0" expanded="true" />
-                <element signature="e#11859#11899#0" expanded="true" />
-                <element signature="e#12021#12061#0" expanded="true" />
-                <element signature="e#12180#12220#0" expanded="true" />
-                <element signature="e#12247#12281#0" expanded="true" />
-                <element signature="e#13815#13844#0" expanded="true" />
+                <element signature="e#4235#4504#0" expanded="true" />
+                <element signature="e#4493#4494#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetCityAsyncTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/geolocation/GetCityAsyncTask.java">
+      <file leaf-file-name="placeholder_today.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/placeholder_today.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            <state vertical-scroll-proportion="-6.9259257" vertical-offset="0" max-vertical-offset="2295">
+              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WeatherParentFragment.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/WeatherParentFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6936416" vertical-offset="6559" max-vertical-offset="7106">
+              <caret line="418" column="52" selection-start-line="418" selection-start-column="52" selection-end-line="418" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3036#3045#0" expanded="true" />
+                <element signature="e#16837#16908#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1432,7 +1392,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/client/parser/WeatherParser.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-land/fragment_weather_forecast.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/WeatherFragment.java" />
@@ -1476,13 +1435,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/client/parser/WeatherJsonParser.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/listener/AnimateImageLoadingListener.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/WeatherParentFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/TodayFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-land/placeholder_today.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/placeholder_today.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/ForecastFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_forecast_day.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/adapter/ForecastArrayAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/listener/OnClickListenerShare.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/TodayFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/ForecastFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/WeatherParentFragment.java" />
       </list>
     </option>
   </component>
@@ -1963,6 +1923,40 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="dialog" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ULikeITWeather" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ULikeITWeather" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="adapter" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2292,7 +2286,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1932" height="1056" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2354,14 +2348,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_settings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.108510636" vertical-offset="0" max-vertical-offset="470">
-          <caret line="3" column="68" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
@@ -2532,14 +2518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/view/ViewState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/task/TaskManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14782609" vertical-offset="0" max-vertical-offset="575">
@@ -2578,14 +2556,6 @@
             <element signature="e#1580#1581#0" expanded="true" />
             <element signature="e#1609#1610#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/task/DownloadWeather.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1294" max-vertical-offset="2057">
-          <caret line="110" column="145" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="145" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2771,14 +2741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/geolocation/GetCityAsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/listener/AnimateImageLoadingListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38345864" vertical-offset="0" max-vertical-offset="646">
@@ -2800,21 +2762,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/placeholder_today.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/view/ViewState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7504951" vertical-offset="352" max-vertical-offset="2295">
-          <caret line="43" column="62" selection-start-line="43" selection-start-column="62" selection-end-line="43" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.06390978" vertical-offset="0" max-vertical-offset="532">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/dialog/ShareDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2556391" vertical-offset="0" max-vertical-offset="1258">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/adapter/ForecastArrayAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6315789" vertical-offset="1602" max-vertical-offset="2176">
+          <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
           <folding>
-            <element signature="e#836#865#0" expanded="true" />
-            <element signature="e#1241#1270#0" expanded="true" />
-            <element signature="e#2679#2714#0" expanded="true" />
-            <element signature="e#2749#2779#0" expanded="true" />
-            <element signature="e#2918#2947#0" expanded="true" />
-            <element signature="e#3246#3275#0" expanded="true" />
+            <element signature="e#5214#5215#0" expanded="true" />
+            <element signature="e#5249#5250#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/geolocation/GetCityAsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2556391" vertical-offset="0" max-vertical-offset="1309">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2823,68 +2802,54 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.666667" vertical-offset="226" max-vertical-offset="1377">
+        <state vertical-scroll-proportion="0.73069304" vertical-offset="226" max-vertical-offset="1377">
           <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/placeholder_today.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.9259257" vertical-offset="0" max-vertical-offset="2295">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/TodayFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
-          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1225" max-vertical-offset="1955">
+          <caret line="96" column="16" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="54" />
           <folding>
-            <element signature="e#1270#1313#0" expanded="true" />
-            <element signature="e#2914#2982#0" expanded="true" />
-            <element signature="e#3096#3166#0" expanded="true" />
-            <element signature="e#3277#3341#0" expanded="true" />
-            <element signature="e#3480#3544#0" expanded="true" />
-            <element signature="e#3592#3656#0" expanded="true" />
-            <element signature="e#4321#4389#0" expanded="true" />
-            <element signature="e#4430#4501#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#4235#4504#0" expanded="true" />
+            <element signature="e#4493#4494#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/ForecastFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="354" max-vertical-offset="918">
-          <caret line="49" column="142" selection-start-line="49" selection-start-column="142" selection-end-line="49" selection-end-column="142" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1037">
+          <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
           <folding>
-            <element signature="e#984#1030#0" expanded="true" />
+            <element signature="e#1077#1123#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/fragment/WeatherParentFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1547" max-vertical-offset="7123">
-          <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.6936416" vertical-offset="6559" max-vertical-offset="7106">
+          <caret line="418" column="52" selection-start-line="418" selection-start-column="52" selection-end-line="418" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2975#2984#0" expanded="true" />
-            <element signature="e#5216#6030#0" expanded="true" />
-            <element signature="e#5646#5907#0" expanded="true" />
-            <element signature="e#5888#5889#0" expanded="true" />
-            <element signature="e#6019#6020#0" expanded="true" />
-            <element signature="e#11222#11264#0" expanded="true" />
-            <element signature="e#11386#11425#0" expanded="true" />
-            <element signature="e#11548#11585#0" expanded="true" />
-            <element signature="e#11704#11744#0" expanded="true" />
-            <element signature="e#11859#11899#0" expanded="true" />
-            <element signature="e#12021#12061#0" expanded="true" />
-            <element signature="e#12180#12220#0" expanded="true" />
-            <element signature="e#12247#12281#0" expanded="true" />
-            <element signature="e#13815#13844#0" expanded="true" />
+            <element signature="e#3036#3045#0" expanded="true" />
+            <element signature="e#16837#16908#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ulikeitweather/app/adapter/ForecastArrayAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30451128" vertical-offset="807" max-vertical-offset="2193">
-          <caret line="77" column="74" selection-start-line="77" selection-start-column="74" selection-end-line="77" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
