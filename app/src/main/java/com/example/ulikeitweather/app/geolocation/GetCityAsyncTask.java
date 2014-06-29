@@ -1,4 +1,4 @@
-package com.example.ulikeitweather.app.task;
+package com.example.ulikeitweather.app.geolocation;
 
 import android.content.Context;
 import android.location.Address;
@@ -8,7 +8,6 @@ import android.util.Log;
 
 import com.example.ulikeitweather.app.R;
 import com.example.ulikeitweather.app.entity.MyLocation;
-import com.example.ulikeitweather.app.listener.OnCityLoadedListener;
 
 import java.io.IOException;
 import java.util.List;

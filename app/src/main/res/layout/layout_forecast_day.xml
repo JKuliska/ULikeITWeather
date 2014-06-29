@@ -32,12 +32,8 @@
                 android:id="@id/img_weather_state_circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/overlay_wsymbols"
                 />
-            <ImageView
-                android:visibility="invisible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/overlay_wsymbols"/>
 
         </RelativeLayout>
     </LinearLayout>

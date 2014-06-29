@@ -14,8 +14,11 @@ import android.widget.TextView;
 
 import com.example.ulikeitweather.app.R;
 import com.example.ulikeitweather.app.entity.Weather;
+import com.example.ulikeitweather.app.listener.AnimateImageLoadingListener;
 import com.example.ulikeitweather.app.utility.Logcat;
 import com.example.ulikeitweather.app.utility.MySharedPrefs;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
@@ -26,13 +29,17 @@ public class ForecastArrayAdapter extends ArrayAdapter<Weather>{
     private int mSelectedPosition = -1;
     private int mWindowHeight;
     private boolean mIsPortrait;
+    private DisplayImageOptions mDisplayImageOptions;
+    private ImageLoader mImageLoader;
 
 
-    public ForecastArrayAdapter(Context context, List<Weather> objects, boolean isPortrait) {
+    public ForecastArrayAdapter(Context context, List<Weather> objects, boolean isPortrait, DisplayImageOptions displayImageOptions, ImageLoader imageLoader) {
         super(context, R.layout.layout_forecast_day, objects);
         mForecast = objects;
         mContext = context;
         mIsPortrait = isPortrait;
+        mDisplayImageOptions = displayImageOptions;
+        mImageLoader = imageLoader;
         mWindowHeight = getItemPxHeight();
     }
 
@@ -69,7 +76,8 @@ public class ForecastArrayAdapter extends ArrayAdapter<Weather>{
                     ? forecastItem.getTempC() + mContext.getResources().getString(R.string.global_celsius_abbr)
                     : forecastItem.getTempF() + mContext.getResources().getString(R.string.global_fahrenheit_abbr));
             holder.weatherDescText.setText(forecastItem.getDescription());
-            //holder.iconImg.setImageResource(forecastItem.getIconResource());
+
+            mImageLoader.displayImage(forecastItem.getImgUrl(), holder.iconImg, mDisplayImageOptions, new AnimateImageLoadingListener());
 
             // selected item
             if (mSelectedPosition == position) {

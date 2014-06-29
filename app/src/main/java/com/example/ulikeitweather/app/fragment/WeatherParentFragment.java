@@ -22,11 +22,19 @@ import com.example.ulikeitweather.app.entity.MyLocation;
 import com.example.ulikeitweather.app.entity.Weather;
 import com.example.ulikeitweather.app.geolocation.Geolocation;
 import com.example.ulikeitweather.app.geolocation.GeolocationListener;
+import com.example.ulikeitweather.app.geolocation.GetCityAsyncTask;
+import com.example.ulikeitweather.app.geolocation.OnCityLoadedListener;
+import com.example.ulikeitweather.app.listener.AnimateImageLoadingListener;
 import com.example.ulikeitweather.app.task.TaskFragment;
 import com.example.ulikeitweather.app.utility.Logcat;
 import com.example.ulikeitweather.app.utility.NetworkManager;
 import com.example.ulikeitweather.app.view.ViewState;
 import com.fasterxml.jackson.core.JsonParseException;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.io.FileNotFoundException;
 import java.net.SocketTimeoutException;
@@ -57,8 +65,14 @@ public abstract class WeatherParentFragment extends TaskFragment implements APIC
     private APICallManager mAPICallManager = new APICallManager();
 
     protected ArrayList<Weather> mWeatherList = new ArrayList<Weather>();
-    private MyLocation mLocation;
+    protected MyLocation mLocation;
     protected boolean mOrientationIsPortrait = true;
+
+    //image
+    protected ImageLoader mImageLoader = ImageLoader.getInstance();
+    protected DisplayImageOptions mDisplayImageOptions;
+
+    protected abstract void renderCityTextView();
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -85,6 +99,18 @@ public abstract class WeatherParentFragment extends TaskFragment implements APIC
         showActionBarProgress(mActionBarProgress);
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        this.mImageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
+        // image caching options
+        mDisplayImageOptions = new DisplayImageOptions.Builder()
+                .showImageForEmptyUri(R.drawable.ic_wind_speed)
+                .showImageOnFail(R.drawable.ic_action_cloud)
+                .cacheInMemory(true)
+                .displayer(new SimpleBitmapDisplayer())
+                .build();
+    }
 
     @Override
     public void onPause() {
@@ -114,13 +140,20 @@ public abstract class WeatherParentFragment extends TaskFragment implements APIC
 
                 Logcat.d("Fragment.onGeolocationRespond(): " + location.getProvider() + " / " + location.getLatitude() + " / " + location.getLongitude() + " / " + new Date(location.getTime()).toString());
                 mLocation = new MyLocation(location);
-
+                new GetCityAsyncTask(getActivity(), new OnCityLoadedListener() {
+                    @Override
+                    public void OnCityLoaded(String cityName) {
+                        mLocation.setCity(cityName);
+                        renderCityTextView();
+                    }
+                }).execute(mLocation);
                 mViewState = null;
                 weatherDownloadAndLoad();
 
             }
         });
     }
+
 
 
     @Override
@@ -378,5 +411,9 @@ public abstract class WeatherParentFragment extends TaskFragment implements APIC
     }
 
     protected abstract void renderView();
+
+    protected void setImageOptions() {
+
+    }
 
 }

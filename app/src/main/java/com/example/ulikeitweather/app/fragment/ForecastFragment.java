@@ -37,6 +37,9 @@ public class ForecastFragment extends WeatherParentFragment {
         }
     }
 
+    @Override
+    protected void renderCityTextView() { }
+
     public void renderView()
     {
         mForecastList = new ArrayList<Weather>();
@@ -44,7 +47,7 @@ public class ForecastFragment extends WeatherParentFragment {
             mForecastList.add(i-1, mWeatherList.get(i));
         }
 
-        mForecastAdapter = new ForecastArrayAdapter(getActivity(), mForecastList, mOrientationIsPortrait);
+        mForecastAdapter = new ForecastArrayAdapter(getActivity(), mForecastList, mOrientationIsPortrait, mDisplayImageOptions, mImageLoader);
         if(mOrientationIsPortrait) {
             ListView forecastListView = (ListView) getActivity().findViewById(R.id.forecast_list);
             forecastListView.setAdapter(mForecastAdapter);
