@@ -38,7 +38,7 @@ release.properties
 *.iml
 *.ipr
 *.iws
-.idea/scopes/*
+.idea/scopes/scope_settings.xml
 .idea/libraries/*
 .idea/inspectionProfiles/*
 .idea/copyright/*
