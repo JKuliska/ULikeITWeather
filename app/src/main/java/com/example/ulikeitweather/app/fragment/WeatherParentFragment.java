@@ -379,10 +379,27 @@ public abstract class WeatherParentFragment extends TaskFragment implements APIC
         ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_content);
         ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
         ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
+        ViewGroup containerEmpty = (ViewGroup) mRootView.findViewById(R.id.container_empty);
+
         containerList.setVisibility(View.VISIBLE);
         containerProgress.setVisibility(View.GONE);
         containerOffline.setVisibility(View.GONE);
+        containerEmpty.setVisibility(View.GONE);
         mViewState = ViewState.CONTENT;
+    }
+
+
+    private void showEmpty() {
+        // show list container
+        ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_content);
+        ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
+        ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
+        ViewGroup containerEmpty = (ViewGroup) mRootView.findViewById(R.id.container_empty);
+        containerList.setVisibility(View.GONE);
+        containerProgress.setVisibility(View.GONE);
+        containerOffline.setVisibility(View.GONE);
+        containerEmpty.setVisibility(View.VISIBLE);
+        mViewState = ViewState.EMPTY;
     }
 
 
@@ -391,9 +408,11 @@ public abstract class WeatherParentFragment extends TaskFragment implements APIC
         ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_content);
         ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
         ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
+        ViewGroup containerEmpty = (ViewGroup) mRootView.findViewById(R.id.container_empty);
         containerList.setVisibility(View.GONE);
         containerProgress.setVisibility(View.VISIBLE);
         containerOffline.setVisibility(View.GONE);
+        containerEmpty.setVisibility(View.GONE);
         mViewState = ViewState.PROGRESS;
     }
 
@@ -403,9 +422,11 @@ public abstract class WeatherParentFragment extends TaskFragment implements APIC
         ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_content);
         ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
         ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
+        ViewGroup containerEmpty = (ViewGroup) mRootView.findViewById(R.id.container_empty);
         containerList.setVisibility(View.GONE);
         containerProgress.setVisibility(View.GONE);
         containerOffline.setVisibility(View.VISIBLE);
+        containerEmpty.setVisibility(View.GONE);
         mViewState = ViewState.OFFLINE;
     }
 
